@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite'
 import { getDirname } from '@adonisjs/core/helpers'
 import inertia from '@adonisjs/inertia/client'
-import { svelte } from '@sveltejs/vite-plugin-svelte'
-import sveltePreprocess from 'svelte-preprocess'
+import { svelte, vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 import adonisjs from '@adonisjs/vite/client'
 
 export default defineConfig({
@@ -10,7 +9,7 @@ export default defineConfig({
     inertia({ ssr: { enabled: true, entrypoint: 'inertia/app/ssr.ts' } }),
     svelte({
       compilerOptions: { hydratable: true },
-      preprocess: sveltePreprocess({ typescript: true }),
+      preprocess: [vitePreprocess()],
     }),
     adonisjs({ entrypoints: ['inertia/app/app.ts'], reload: ['resources/views/**/*.edge'] }),
   ],
