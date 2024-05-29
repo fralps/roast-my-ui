@@ -3,12 +3,18 @@ import { sessionGuard, sessionUserProvider } from '@adonisjs/auth/session'
 import type { InferAuthEvents, Authenticators } from '@adonisjs/auth/types'
 
 const authConfig = defineConfig({
-  default: 'web',
+  default: 'roaster',
   guards: {
-    web: sessionGuard({
+    roaster: sessionGuard({
       useRememberMeTokens: false,
       provider: sessionUserProvider({
-        model: () => import('#models/user'),
+        model: () => import('#models/roaster'),
+      }),
+    }),
+    roastee: sessionGuard({
+      useRememberMeTokens: false,
+      provider: sessionUserProvider({
+        model: () => import('#models/roastee'),
       }),
     }),
   },

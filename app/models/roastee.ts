@@ -9,12 +9,24 @@ const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   passwordColumnName: 'password',
 })
 
-export default class User extends compose(BaseModel, AuthFinder) {
+export default class Roastee extends compose(BaseModel, AuthFinder) {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare fullName: string | null
+  declare username: string
+
+  @column()
+  declare first_name: string | null
+
+  @column()
+  declare last_name: string | null
+
+  @column()
+  declare description: string | null
+
+  @column()
+  declare avatar: string | null
 
   @column()
   declare email: string
