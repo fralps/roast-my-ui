@@ -11,7 +11,7 @@ export default class extends BaseSchema {
       table.string('first_name').nullable()
       table.string('last_name').nullable()
       table.text('description').nullable()
-      table.string('username').notNullable()
+      table.string('username').notNullable().unique()
       table.string('avatar').nullable()
 
       table.timestamp('created_at').notNullable()
