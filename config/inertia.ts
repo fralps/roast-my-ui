@@ -11,6 +11,8 @@ export default defineConfig({
    */
   sharedData: {
     errors: (ctx) => ctx.session?.flashMessages.get('errors'),
+    // 👇 Scoped to the current request
+    user: (ctx) => ctx.auth?.user,
   },
 
   /**
