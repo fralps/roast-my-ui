@@ -40,9 +40,6 @@ importers:
       '@vinejs/vine':
         specifier: ^2.0.0
         version: 2.1.0
-      axios:
-        specifier: ^1.7.2
-        version: 1.7.2
       edge.js:
         specifier: ^6.0.2
         version: 6.0.2

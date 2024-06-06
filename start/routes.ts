@@ -1,8 +1,8 @@
 import router from '@adonisjs/core/services/router'
 
-const HomeController = () => import('#controllers/home_controller')
+const HomeController = () => import('#controllers/api/v1/home_controller')
 const SessionsController = () => import('#controllers/sessions_controller')
-const ProposalsController = () => import('#controllers/proposals_controller')
+const ProposalsController = () => import('#controllers/api/v1/proposals_controller')
 
 router.get('/', [HomeController, 'index'])
 router.on('/login').renderInertia('login')
