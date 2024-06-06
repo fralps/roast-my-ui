@@ -13,13 +13,6 @@ body {
   font-family: Nabla, sans-serif;
 }
 
-.animated-title {
-  animation: depth 1s ease-in-out alternate infinite;
-  position: relative;
-  display: inline-block;
-  font-variation-settings: 'EDPT' 30;
-}
-
 @font-palette-values --Default {
   font-family: Nabla;
 }
