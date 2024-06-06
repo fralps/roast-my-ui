@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import hash from '@adonisjs/core/services/hash'
 import { compose } from '@adonisjs/core/helpers'
-import RoasteeProposal from '#models/roastee_proposal'
+import Proposal from '#models/proposal'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
@@ -12,8 +12,8 @@ const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
 })
 
 export default class Roastee extends compose(BaseModel, AuthFinder) {
-  @hasMany(() => RoasteeProposal)
-  declare roastee_proposals: HasMany<typeof RoasteeProposal>
+  @hasMany(() => Proposal)
+  declare proposals: HasMany<typeof Proposal>
 
   @column({ isPrimary: true })
   declare id: number

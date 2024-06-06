@@ -1,11 +1,15 @@
 import { DateTime } from 'luxon'
 import Roastee from '#models/roastee'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
+import Review from '#models/review'
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
+import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm'
 
-export default class RoasteeProposal extends BaseModel {
+export default class Proposal extends BaseModel {
   @belongsTo(() => Roastee)
   declare roastee: BelongsTo<typeof Roastee>
+
+  @hasMany(() => Review)
+  declare reviews: HasMany<typeof Review>
 
   @column()
   declare roasteeId: number

@@ -1,8 +1,9 @@
 import factory from '@adonisjs/lucid/factories'
-import RoasteeProposal from '#models/roastee_proposal'
+import Proposal from '#models/proposal'
+import { ReviewFactory } from '#database/factories/review_factory'
 
-export const RoasteeProposalFactory = factory
-  .define(RoasteeProposal, async ({ faker }) => {
+export const ProposalFactory = factory
+  .define(Proposal, async ({ faker }) => {
     return {
       title: faker.lorem.sentence(),
       description: faker.lorem.paragraph(),
@@ -11,4 +12,5 @@ export const RoasteeProposalFactory = factory
       roastLimit: faker.number.int({ max: 20 }),
     }
   })
+  .relation('reviews', () => ReviewFactory)
   .build()

@@ -1,9 +1,9 @@
 import factory from '@adonisjs/lucid/factories'
-import { ProposalFactory } from '#database/factories/proposal_factory'
-import Roastee from '#models/roastee'
+import { ReviewFactory } from '#database/factories/review_factory'
+import Roaster from '#models/roaster'
 
-export const RoasteeFactory = factory
-  .define(Roastee, async ({ faker }) => {
+export const RoasterFactory = factory
+  .define(Roaster, async ({ faker }) => {
     return {
       email: faker.internet.email(),
       password: 'password',
@@ -14,5 +14,4 @@ export const RoasteeFactory = factory
       avatar: faker.image.avatar(),
     }
   })
-  .relation('proposals', () => ProposalFactory)
   .build()

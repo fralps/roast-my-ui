@@ -3,6 +3,8 @@ import { BaseSeeder } from '@adonisjs/lucid/seeders'
 
 export default class extends BaseSeeder {
   async run() {
-    await RoasteeFactory.with('roastee_proposals', 10).create()
+    await RoasteeFactory.with('proposals', 10, (proposal) =>
+      proposal.with('reviews', 5, (review) => review.with('roaster'))
+    ).create()
   }
 }
