@@ -13,6 +13,21 @@ export default class RoasteeProposal extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+  declare title: string
+
+  @column()
+  declare description: string
+
+  @column()
+  declare websiteUrl: string
+
+  @column()
+  declare screenshots: string | null
+
+  @column()
+  declare roastLimit: number | null
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

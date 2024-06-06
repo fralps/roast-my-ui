@@ -22,10 +22,10 @@ export default class Roastee extends compose(BaseModel, AuthFinder) {
   declare username: string
 
   @column()
-  declare first_name: string | null
+  declare firstName: string | null
 
   @column()
-  declare last_name: string | null
+  declare lastName: string | null
 
   @column()
   declare description: string | null
