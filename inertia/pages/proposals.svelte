@@ -25,11 +25,11 @@
     {#if proposals.data}
       {#each proposals.data as proposal}
         <div class="max-w-sm mb-10 bg-white border border-gray-200 rounded-lg shadow-lg">
-          <a href="#">
+          <a href="https://kinoba.fr">
             <img class="w-full rounded-t-lg" src={proposal.screenshots} alt="" />
           </a>
           <div class="p-5">
-            <a href="#">
+            <a href="https://kinoba.fr">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
                 {proposal.title}
               </h5>
@@ -38,7 +38,7 @@
               {proposal.description}
             </p>
             <a
-              href="#"
+              href="https://kinoba.fr"
               class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-700 rounded-lg hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
             >
               Roast me
