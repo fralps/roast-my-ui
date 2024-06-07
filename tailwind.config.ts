@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import daisyui from 'daisyui'
+
 const config = {
   content: [
     './resources/**/*.edge',
@@ -8,7 +11,10 @@ const config = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  daisyui: {
+    themes: ['synthwave'],
+  },
+  plugins: [daisyui],
 }
 
 export default config

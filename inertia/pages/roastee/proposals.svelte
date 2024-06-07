@@ -1,10 +1,12 @@
 <script lang="ts">
-  import { Link } from '@inertiajs/svelte'
+  import { Navbar } from '@components'
 
   export let proposals: {
     data: { title: string; description: string; screenshots: string }[]
-    meta: {}
+    meta: { currentPage: number }
   }
+
+  const meta = proposals.meta
 
   const title = 'Proposals'
 </script>
@@ -13,13 +15,13 @@
   <title>RoastMyUI - {title}</title>
 </svelte:head>
 
+<Navbar />
 <div>
   <h1 class="text-6xl text-center nabla">
     {#each title as letter, index}
       <span style="animation-delay: {0.0 + index * 0.1}s">{letter}</span>
     {/each}
   </h1>
-  <div class="mt-10 text-center"><Link href="/">Home</Link></div>
 
   <div class="grid">
     {#if proposals.data}
@@ -61,6 +63,11 @@
           </div>
         </div>
       {/each}
+      <div class="join">
+        <button class="join-item btn">Prev</button>
+        <button class="join-item btn">{meta.currentPage}</button>
+        <button class="join-item btn">Next</button>
+      </div>
     {/if}
   </div>
 </div>

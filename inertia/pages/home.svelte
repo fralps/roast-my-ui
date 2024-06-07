@@ -8,17 +8,43 @@
   <title>{title} - Homepage</title>
 </svelte:head>
 
-<div>
-  <h1 class="text-6xl text-center nabla">
+<section class="flex flex-col items-center justify-center h-screen mx-4">
+  <h1 class="text-4xl text-center sm:text-6xl md:text-8xl nabla">
     {#each title as letter, index}
-      <span style="animation-delay: {0.0 + index * 0.1}s">{letter}</span>
+      <span class="animated-title" style="animation-delay: {0.0 + index * 0.1}s">{letter}</span>
     {/each}
   </h1>
-  <div class="mt-10 text-center"><Link href="/login">Login</Link></div>
-</div>
 
-<style lang="css">
+  <div class="flex flex-col gap-10 mt-20 text-center sm:flex-row">
+    <button class="hover:text-primary btn glass">Getting roasted</button>
+    <button class="btn hover:text-secondary glass">Roast someone UI</button>
+  </div>
+
+  <div class="mt-10">
+    or <Link href="/auth/sessions/create" class="link link-accent">Login</Link>
+  </div>
+</section>
+
+<style lang="css" scoped>
+  .animated-title {
+    animation: depth 1s ease-in-out alternate infinite;
+    position: relative;
+    display: inline-block;
+    font-variation-settings: 'EDPT' 30;
+  }
+
   span {
     font-palette: --Default;
+  }
+
+  @keyframes depth {
+    0% {
+      transform: translatex(0) translatey(0);
+    }
+
+    100% {
+      font-variation-settings: 'EDPT' 200;
+      transform: translatex(0.15em) translatey(0.1em);
+    }
   }
 </style>

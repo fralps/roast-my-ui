@@ -5,11 +5,10 @@ const SessionsController = () => import('#controllers/sessions_controller')
 const ProposalsController = () => import('#controllers/api/v1/proposals_controller')
 
 router.get('/', [HomeController, 'index'])
-router.on('/login').renderInertia('login')
 
 router
   .group(() => {
-    router.post('/users/login', [SessionsController, 'store'])
+    router.resource('sessions', SessionsController).only(['create', 'store'])
   })
   .prefix('auth')
 

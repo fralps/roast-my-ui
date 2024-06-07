@@ -1,6 +1,9 @@
 <script lang="ts">
-  import { useForm, Link } from '@inertiajs/svelte'
+  import { useForm } from '@inertiajs/svelte'
+
   import { Input, Checkbox } from '@components'
+
+  export let message: string
 
   let form = useForm({
     email: null,
@@ -10,7 +13,10 @@
   const title = 'Login'
 
   const login = (): void => {
-    $form.post('/auth/users/login')
+    $form.post('/auth/sessions', {
+      preserveScroll: true,
+      onSuccess: () => $form.reset('password'),
+    })
   }
 </script>
 
@@ -18,15 +24,32 @@
   <title>RoastMyUI - {title}</title>
 </svelte:head>
 
-<div class="py-12">
+<section class="flex flex-col items-center justify-center h-screen mx-4">
   <h1 class="text-6xl text-center nabla">
     {#each title as letter, index}
       <span style="animation-delay: {0.0 + index * 0.1}s">{letter}</span>
     {/each}
   </h1>
-  <div class="mt-10 text-center"><Link href="/">Home</Link></div>
 
-  <form on:submit|preventDefault={login} class="w-1/2 mx-auto mt-10">
+  <form on:submit|preventDefault={login} class="w-full mx-auto mt-10 md:w-1/2">
+    {#if message}
+      <div role="alert" class="mb-10 alert alert-warning">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6 stroke-current shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+          /></svg
+        >
+        <span>{message}</span>
+      </div>
+    {/if}
+
     <Input
       type="email"
       placeholder="john@doe.com"
@@ -45,19 +68,15 @@
       bind:value={$form.password}
     />
 
-    <Checkbox label="Remember me" classes="mb-6" bind:checked={$form.remember} />
-
-    <button
-      type="submit"
-      class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-    >
-      Login
-    </button>
+    <div class="flex flex-col justify-end w-full">
+      <Checkbox label="Remember me" classes="mb-6" bind:checked={$form.remember} />
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
   </form>
-</div>
+</section>
 
-<style lang="css">
+<style lang="css" scoped>
   span {
-    font-palette: --Blue;
+    font-palette: --Default;
   }
 </style>
