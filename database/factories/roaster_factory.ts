@@ -1,5 +1,4 @@
 import factory from '@adonisjs/lucid/factories'
-import { ReviewFactory } from '#database/factories/review_factory'
 import Roaster from '#models/roaster'
 
 export const RoasterFactory = factory
