@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Link } from '@inertiajs/svelte'
+  import { Link, page } from '@inertiajs/svelte'
 
   const title = 'RoastMyUI'
 </script>
@@ -21,7 +21,9 @@
   </div>
 
   <div class="mt-10">
-    or <Link href="/auth/sessions/create" class="link link-accent">Login</Link>
+    or <Link href={$page.props.user ? '' : '/auth/sessions/create'} class="link link-accent"
+      >Login</Link
+    >
   </div>
 </section>
 

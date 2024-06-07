@@ -1,6 +1,7 @@
 import emitter from '@adonisjs/core/services/emitter'
 import app from '@adonisjs/core/services/app'
 import string from '@adonisjs/core/helpers/string'
+import db from '@adonisjs/lucid/services/db'
 import logger from '@adonisjs/core/services/logger'
 
 // HTTP
@@ -16,6 +17,11 @@ emitter.on('http:request_completed', (event: any) => {
   )
 })
 
-emitter.on('db:query', () => {
-  if (app.inTest) return
+// DB
+emitter.on('db:query', (query) => {
+  if (app.inProduction) {
+    logger.debug(`[DATABASE] - ${query}`)
+  } else {
+    db.prettyPrint(query)
+  }
 })

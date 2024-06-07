@@ -25,7 +25,7 @@
 </svelte:head>
 
 <section class="flex flex-col items-center justify-center h-screen mx-4">
-  <h1 class="text-6xl text-center nabla">
+  <h1 class="text-xl text-center md:text-6xl nabla">
     {#each title as letter, index}
       <span style="animation-delay: {0.0 + index * 0.1}s">{letter}</span>
     {/each}

@@ -6,7 +6,7 @@
 
 <div class={classes}>
   <label class="flex items-center gap-2 input input-bordered">
-    {label}
+    <span class="font-bold">{label}</span>
     <input class="grow" {...$$restProps} bind:value />
   </label>
 </div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Link } from '@inertiajs/svelte'
+  import { Link, page } from '@inertiajs/svelte'
 
   const title = 'RoastMyUI'
 </script>
@@ -24,7 +24,8 @@
       </div>
       <ul class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li><Link href="/">Home</Link></li>
-        <li><Link href="/proposals">My proposals</Link></li>
+        <li><Link href="/proposals">All proposals</Link></li>
+        <li><Link href="/roastee/proposals">My proposals</Link></li>
       </ul>
     </div>
     <div class="text-xl md:text-3xl btn btn-ghost nabla">
@@ -39,12 +40,18 @@
     <ul class="px-1 menu menu-horizontal">
       <li><Link href="/">Home</Link></li>
       <li><Link href="/proposals">All proposals</Link></li>
-      <li><Link href="/proposals">My proposals</Link></li>
+      <li><Link href="/roastee/proposals">My proposals</Link></li>
     </ul>
   </div>
-  <div class="navbar-end">
-    <!-- <button class="btn btn-primary">Login</button> -->
-  </div>
+  {#if $page.props.user}
+    <div class="navbar-end">
+      <div class="avatar">
+        <div class="w-8 rounded-full">
+          <img src={$page.props.user.avatar} alt="User avatar" />
+        </div>
+      </div>
+    </div>
+  {/if}
 </div>
 
 <style lang="css">

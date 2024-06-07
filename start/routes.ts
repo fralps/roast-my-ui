@@ -1,8 +1,10 @@
 import router from '@adonisjs/core/services/router'
+import { middleware } from '#start/kernel'
 
-const HomeController = () => import('#controllers/api/v1/home_controller')
+const HomeController = () => import('#controllers/home_controller')
 const SessionsController = () => import('#controllers/sessions_controller')
-const ProposalsController = () => import('#controllers/api/v1/proposals_controller')
+const ProposalsController = () => import('#controllers/proposals_controller')
+const RoasteeProposalsController = () => import('#controllers/roastee/proposals_controller')
 
 router.get('/', [HomeController, 'index'])
 
@@ -12,4 +14,14 @@ router
   })
   .prefix('auth')
 
-router.resource('/proposals', ProposalsController).only(['index'])
+router
+  .group(() => {
+    router.resource('proposals', ProposalsController).only(['index'])
+  })
+  .use(middleware.auth({ guards: ['roaster'] }))
+
+router
+  .group(() => {
+    router.resource('/roastee/proposals', RoasteeProposalsController).only(['index'])
+  })
+  .use(middleware.auth({ guards: ['roastee'] }))

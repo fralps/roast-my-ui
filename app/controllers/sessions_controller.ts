@@ -22,16 +22,16 @@ export default class SessionsController {
 
     if (roaster) {
       const roasterAuth = await Roaster.verifyCredentials(email, password)
-      console.log('Roaster')
+      console.log('IF Roaster')
       await auth.use('roaster').login(roasterAuth)
       return response.redirect().toRoute('proposals.index')
     }
 
     if (roastee) {
-      console.log('Roastee')
+      console.log('IF Roastee')
       const roasteeAuth = await Roastee.verifyCredentials(email, password)
       await auth.use('roastee').login(roasteeAuth)
-      return response.redirect().toRoute('proposals.index')
+      return response.redirect().toRoute('roastee_proposals.index')
     }
   }
 }

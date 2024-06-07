@@ -12,7 +12,7 @@ const config = {
     extend: {},
   },
   daisyui: {
-    themes: ['synthwave'],
+    themes: ['dark'],
   },
   plugins: [daisyui],
 }

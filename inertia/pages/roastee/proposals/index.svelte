@@ -9,7 +9,7 @@
   }
 
   const meta = proposals?.meta
-  const title = 'Proposals'
+  const title = 'My proposals'
 
   let form = useForm({
     page: 1,
@@ -24,7 +24,7 @@
     if ($form.page >= $form.lastPage) return
 
     $form.page++
-    $form.get(`/proposals?page=${$form.page}`, {
+    $form.get(`/roastee/proposals?page=${$form.page}`, {
       preserveScroll: false,
       onSuccess: () => {
         const response = $page.props.proposals.meta
@@ -45,7 +45,7 @@
     if ($form.page <= 1) return
 
     $form.page--
-    $form.get(`/proposals?page=${$form.page}`)
+    $form.get(`/roastee/proposals?page=${$form.page}`)
   }
 </script>
 
@@ -55,7 +55,7 @@
 
 <Navbar />
 <section class="pb-10 mt-10">
-  <h1 class="text-6xl text-center nabla">
+  <h1 class="text-3xl text-center nabla">
     {#each title as letter, index}
       <span style="animation-delay: {0.0 + index * 0.1}s">{letter}</span>
     {/each}
