@@ -34,4 +34,11 @@ export default class SessionsController {
       return response.redirect().toRoute('roastee_proposals.index')
     }
   }
+
+  async destroy({ request, auth, response }: HttpContext) {
+    const userType = request.input('type', 'roastee')
+    await auth.use(userType).logout()
+
+    return response.redirect().toRoute('sessions.create')
+  }
 }

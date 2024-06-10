@@ -11,6 +11,7 @@ router.get('/', [HomeController, 'index'])
 router
   .group(() => {
     router.resource('sessions', SessionsController).only(['create', 'store'])
+    router.delete('sessions', [SessionsController, 'destroy'])
   })
   .prefix('auth')
 

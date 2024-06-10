@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useForm } from '@inertiajs/svelte'
+  import { useForm, Link } from '@inertiajs/svelte'
 
   import { Input, Checkbox } from '@components'
 
@@ -25,11 +25,13 @@
 </svelte:head>
 
 <section class="flex flex-col items-center justify-center h-screen mx-4">
-  <h1 class="text-xl text-center md:text-6xl nabla">
+  <h1 class="text-xl text-center md:text-6xl nabla mb-6">
     {#each title as letter, index}
       <span style="animation-delay: {0.0 + index * 0.1}s">{letter}</span>
     {/each}
   </h1>
+
+  <Link href="/" class="link link-accent">Home</Link>
 
   <form on:submit|preventDefault={login} class="w-full mx-auto mt-10 md:w-1/2">
     {#if message}

@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { Link, page } from '@inertiajs/svelte'
+  import { Link, page, inertia } from '@inertiajs/svelte'
 
   const title = 'RoastMyUI'
+
+  const user = $page.props.user
 </script>
 
 <div class="shadow-md navbar bg-base-100">
@@ -24,8 +26,11 @@
       </div>
       <ul class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li><Link href="/">Home</Link></li>
-        <li><Link href="/proposals">All proposals</Link></li>
-        <li><Link href="/roastee/proposals">My proposals</Link></li>
+        {#if user.type === 'roastee'}
+          <li><Link href="/roastee/proposals">My proposals</Link></li>
+        {:else}
+          <li><Link href="/proposals">All proposals</Link></li>
+        {/if}
       </ul>
     </div>
     <div class="text-xl md:text-3xl btn btn-ghost nabla">
@@ -39,17 +44,24 @@
   <div class="hidden navbar-center lg:flex">
     <ul class="px-1 menu menu-horizontal">
       <li><Link href="/">Home</Link></li>
-      <li><Link href="/proposals">All proposals</Link></li>
-      <li><Link href="/roastee/proposals">My proposals</Link></li>
+      {#if user.type === 'roastee'}
+        <li><Link href="/roastee/proposals">My proposals</Link></li>
+      {:else}
+        <li><Link href="/proposals">All proposals</Link></li>
+      {/if}
     </ul>
   </div>
-  {#if $page.props.user}
+  {#if user}
     <div class="navbar-end">
       <div class="avatar">
         <div class="w-8 rounded-full">
-          <img src={$page.props.user.avatar} alt="User avatar" />
+          <img src={user.avatar} alt="User avatar" />
         </div>
       </div>
+      <button
+        use:inertia={{ href: `/auth/sessions?type=${user.type}`, method: 'delete' }}
+        class="link link-error ml-2">Logout</button
+      >
     </div>
   {/if}
 </div>
