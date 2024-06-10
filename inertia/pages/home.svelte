@@ -21,8 +21,13 @@
   </div>
 
   <div class="mt-10">
-    or <Link href={$page.props.user ? '' : '/auth/sessions/create'} class="link link-accent"
-      >Login</Link
+    or <Link
+      href={$page.props.user
+        ? $page.props.user.type === 'roastee'
+          ? '/roastee/proposals'
+          : '/proposals'
+        : '/auth/sessions/create'}
+      class="link link-accent">Login</Link
     >
   </div>
 </section>

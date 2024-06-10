@@ -12,6 +12,7 @@ export const RoasteeFactory = factory
       description: faker.lorem.paragraph(),
       username: faker.internet.userName(),
       avatar: faker.image.avatar(),
+      type: 'roastee',
     }
   })
   .relation('proposals', () => ProposalFactory)

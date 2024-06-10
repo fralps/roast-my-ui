@@ -34,6 +34,9 @@ export default class Roaster extends compose(BaseModel, AuthFinder) {
   declare avatar: string | null
 
   @column()
+  declare type: string
+
+  @column()
   declare email: string
 
   @column({ serializeAs: null })

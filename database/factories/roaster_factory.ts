@@ -11,6 +11,7 @@ export const RoasterFactory = factory
       description: faker.lorem.paragraph(),
       username: faker.internet.userName(),
       avatar: faker.image.avatar(),
+      type: 'roaster',
     }
   })
   .build()
