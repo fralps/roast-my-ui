@@ -4,7 +4,7 @@
   import { useForm, page } from '@inertiajs/svelte'
 
   export let proposals: {
-    data: { title: string; description: string; screenshots: string }[]
+    data: { title: string; createdAt: string }[]
     meta: { currentPage: number; total: number; lastPage: number }
   }
 
@@ -64,11 +64,7 @@
   <div class="w-4/5 mx-auto mt-10 md:w-1/2">
     {#if proposals.data}
       {#each proposals.data as proposal}
-        <ProposalCard
-          title={proposal.title}
-          description={proposal.description}
-          screenshots={proposal.screenshots}
-        />
+        <ProposalCard title={proposal.title} createdAt={proposal.createdAt} />
       {/each}
       <div class="justify-center w-full join">
         <button class="join-item btn" disabled={$form.page <= 1} on:click={prevPage}>Prev</button>
