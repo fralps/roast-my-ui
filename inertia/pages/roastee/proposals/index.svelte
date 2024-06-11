@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { Navbar, ProposalCard } from '@components'
-  import { useForm, page } from '@inertiajs/svelte'
+  import { useForm, page, inertia } from '@inertiajs/svelte'
 
   export let proposals: {
     data: { title: string; createdAt: string }[]
@@ -61,8 +61,32 @@
     {/each}
   </h1>
 
+  <div class="text-center mt-10">
+    <button
+      class="btn btn-primary btn-sm"
+      use:inertia={{ href: '/roastee/proposals/create', method: 'get' }}
+    >
+      <span class="rotate-45">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          /></svg
+        ></span
+      >
+      New proposal
+    </button>
+  </div>
+
   <div class="w-4/5 mx-auto mt-10 md:w-1/2">
-    {#if proposals.data}
+    {#if proposals.data?.length}
       {#each proposals.data as proposal}
         <ProposalCard title={proposal.title} createdAt={proposal.createdAt} />
       {/each}
