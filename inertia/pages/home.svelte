@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Link } from '@inertiajs/svelte'
+  import { Link, inertia } from '@inertiajs/svelte'
 
   const title = 'RoastMyUI'
 </script>
@@ -16,8 +16,16 @@
   </h1>
 
   <div class="flex flex-col gap-10 mt-20 text-center sm:flex-row">
-    <button class="hover:text-primary btn glass">Getting roasted</button>
-    <button class="btn hover:text-secondary glass">Roast someone UI</button>
+    <button
+      class="hover:text-primary btn glass"
+      use:inertia={{ href: '/auth/registrations/create?type=roastee', method: 'get' }}
+      >Getting roasted</button
+    >
+    <button
+      class="btn hover:text-secondary glasss"
+      use:inertia={{ href: '/auth/registrations/create?type=roaster', method: 'get' }}
+      >Roast someone UI</button
+    >
   </div>
 
   <div class="mt-10">

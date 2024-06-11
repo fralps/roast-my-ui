@@ -3,6 +3,7 @@ import { middleware } from '#start/kernel'
 
 const HomeController = () => import('#controllers/home_controller')
 const SessionsController = () => import('#controllers/sessions_controller')
+const RegistrationsController = () => import('#controllers/registrations_controller')
 const ProposalsController = () => import('#controllers/proposals_controller')
 const RoasteeProposalsController = () => import('#controllers/roastee/proposals_controller')
 
@@ -12,6 +13,7 @@ router
   .group(() => {
     router.resource('sessions', SessionsController).only(['create', 'store'])
     router.delete('sessions', [SessionsController, 'destroy'])
+    router.resource('registrations', RegistrationsController).only(['create', 'store'])
   })
   .prefix('auth')
 
