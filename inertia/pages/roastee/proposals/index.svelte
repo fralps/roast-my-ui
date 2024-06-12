@@ -1,10 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { Navbar, ProposalCard } from '@components'
-  import { useForm, page, inertia } from '@inertiajs/svelte'
+  import { useForm, page, inertia, Link } from '@inertiajs/svelte'
 
   export let proposals: {
-    data: { title: string; createdAt: string }[]
+    data: { id: number; title: string; createdAt: string }[]
     meta: { currentPage: number; total: number; lastPage: number }
   }
 
@@ -88,7 +88,9 @@
   <div class="w-4/5 mx-auto mt-10 md:w-1/2">
     {#if proposals.data?.length}
       {#each proposals.data as proposal}
-        <ProposalCard title={proposal.title} createdAt={proposal.createdAt} />
+        <Link href={`/roastee/proposals/${proposal.id}`} class="link">
+          <ProposalCard title={proposal.title} createdAt={proposal.createdAt} />
+        </Link>
       {/each}
       <div class="justify-center w-full join">
         <button class="join-item btn" disabled={$form.page <= 1} on:click={prevPage}>Prev</button>
@@ -97,12 +99,8 @@
           >Next</button
         >
       </div>
+    {:else}
+      <p class="text-center">No proposals found</p>
     {/if}
   </div>
 </section>
-
-<style lang="css">
-  span {
-    font-palette: --Default;
-  }
-</style>

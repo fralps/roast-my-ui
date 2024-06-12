@@ -27,6 +27,6 @@ router
   .group(() => {
     router
       .resource('/roastee/proposals', RoasteeProposalsController)
-      .only(['index', 'create', 'store'])
+      .only(['index', 'create', 'store', 'show'])
   })
   .use(middleware.auth({ guards: ['roastee'] }))
