@@ -12,8 +12,6 @@
   })
 
   const create = (): void => {
-    console.log('Creating proposal', $form)
-
     $form.post('/roastee/proposals', {
       preserveScroll: true,
       onSuccess: () => {

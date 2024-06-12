@@ -5,6 +5,7 @@ import Review from '#models/review'
 export const ReviewFactory = factory
   .define(Review, async ({ faker }) => {
     return {
+      title: faker.lorem.sentence(),
       description: faker.lorem.paragraph(),
       screenshots: faker.image.url(),
     }

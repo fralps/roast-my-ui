@@ -21,6 +21,9 @@ export default class Review extends BaseModel {
   declare id: number
 
   @column()
+  declare title: string
+
+  @column()
   declare description: string
 
   @column()

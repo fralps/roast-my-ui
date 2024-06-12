@@ -30,6 +30,7 @@
           <li><Link href="/roastee/proposals">My proposals</Link></li>
         {:else}
           <li><Link href="/proposals">All proposals</Link></li>
+          <li><Link href="/reviews">My reviews</Link></li>
         {/if}
       </ul>
     </div>
@@ -48,6 +49,7 @@
         <li><Link href="/roastee/proposals">My proposals</Link></li>
       {:else}
         <li><Link href="/proposals">All proposals</Link></li>
+        <li><Link href="/reviews">My reviews</Link></li>
       {/if}
     </ul>
   </div>
@@ -60,7 +62,7 @@
       </div>
       <button
         use:inertia={{ href: `/auth/sessions?type=${user.type}`, method: 'delete' }}
-        class="link link-error ml-2">Logout</button
+        class="link link-error ml-2 no-underline">Logout</button
       >
     </div>
   {/if}
