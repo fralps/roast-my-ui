@@ -22,7 +22,7 @@
       >Getting roasted</button
     >
     <button
-      class="btn hover:text-secondary glasss"
+      class="btn hover:text-secondary glass"
       use:inertia={{ href: '/auth/registrations/create?type=roaster', method: 'get' }}
       >Roast someone UI</button
     >
