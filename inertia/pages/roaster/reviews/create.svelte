@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Link, useForm } from '@inertiajs/svelte'
-  import { Navbar, Input, Textarea } from '@components'
+  import { Navbar, Input, Textarea, Button } from '@components'
 
   export let proposalId: number
 
@@ -54,7 +54,7 @@
       />
 
       <div class="flex flex-col justify-end w-full">
-        <button type="submit" class="btn btn-primary">Create</button>
+        <Button label="Create" type="submit" theme="primary" />
       </div>
     </form>
   </div>

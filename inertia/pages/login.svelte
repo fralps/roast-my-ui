@@ -1,7 +1,6 @@
 <script lang="ts">
   import { useForm, Link } from '@inertiajs/svelte'
-
-  import { Input, Checkbox } from '@components'
+  import { Input, Checkbox, Button } from '@components'
 
   let form = useForm({
     email: null,
@@ -52,7 +51,7 @@
 
     <div class="flex flex-col justify-end w-full">
       <Checkbox label="Remember me" classes="mb-6" bind:checked={$form.remember} />
-      <button type="submit" class="btn btn-primary">Login</button>
+      <Button label="Login" type="submit" theme="primary" />
     </div>
   </form>
 </section>

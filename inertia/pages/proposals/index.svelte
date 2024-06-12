@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { Navbar, ProposalCard } from '@components'
+  import { Navbar, ProposalCard, Button } from '@components'
   import { useForm, page, Link } from '@inertiajs/svelte'
 
   export let proposals: {

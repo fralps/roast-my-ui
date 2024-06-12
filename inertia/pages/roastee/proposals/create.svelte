@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Link, useForm } from '@inertiajs/svelte'
-  import { Navbar, Input, Textarea, Range } from '@components'
+  import { Navbar, Input, Textarea, Range, Button } from '@components'
 
   const title = 'New proposal'
 
@@ -70,7 +70,7 @@
     <Range min="1" max="5" classes="mb-6" label="Roast limit" bind:value={$form.roastLimit} />
 
     <div class="flex flex-col justify-end w-full">
-      <button type="submit" class="btn btn-primary">Create</button>
+      <Button label="Create" type="submit" theme="primary" />
     </div>
   </form>
 </section>

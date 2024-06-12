@@ -1,7 +1,6 @@
 <script lang="ts">
   import { useForm, Link } from '@inertiajs/svelte'
-
-  import { Input, Textarea } from '@components'
+  import { Input, Textarea, Button } from '@components'
 
   export let type: { type: string }
 
@@ -106,7 +105,7 @@
     />
 
     <div class="flex flex-col justify-end w-full">
-      <button type="submit" class="btn btn-primary">Register</button>
+      <Button label="Register" type="submit" theme="primary" />
     </div>
   </form>
 </section>
