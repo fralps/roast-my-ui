@@ -36,4 +36,13 @@ export default class ProposalsController {
     const proposal: Proposal = await Proposal.findOrFail(params.id)
     return inertia.render('roastee/proposals/show', { proposal })
   }
+
+  async destroy({ params, response }: HttpContext) {
+    const proposal: Proposal = await Proposal.findOrFail(params.id)
+
+    if (proposal) {
+      await proposal.delete()
+      response.redirect().toRoute('roastee_proposals.index')
+    }
+  }
 }

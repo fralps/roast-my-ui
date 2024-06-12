@@ -1,8 +1,10 @@
 <script lang="ts">
-  import { Link } from '@inertiajs/svelte'
+  import { Link, inertia, page } from '@inertiajs/svelte'
   import { Navbar } from '@components'
 
   export let proposal: {
+    id: number
+    roasteeId: number
     title: string
     description: string
     websiteUrl: string
@@ -45,6 +47,16 @@
         ).toLocaleDateString()}
       </p>
     </div>
+
+    {#if $page.props.user.id === proposal.roasteeId}
+      <div class="w-full text-center mt-10">
+        <button
+          class="btn btn-outline btn-error btn-sm"
+          use:inertia={{ href: `/roastee/proposals/${proposal.id}`, method: 'delete' }}
+          >Delete proposal</button
+        >
+      </div>
+    {/if}
   {:else}
     <p>No proposal found</p>
   {/if}
