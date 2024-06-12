@@ -19,7 +19,7 @@ router
 
 router
   .group(() => {
-    router.resource('proposals', ProposalsController).only(['index'])
+    router.resource('proposals', ProposalsController).only(['index', 'show'])
   })
   .use(middleware.auth({ guards: ['roaster'] }))
 

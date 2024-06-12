@@ -22,7 +22,7 @@
 <Navbar />
 <section class="pb-10 mt-10 mx-4">
   <div class="text-center mb-10">
-    <Link href="/roastee/proposals" class="link link-accent text-sm">Go back to my proposals</Link>
+    <Link href="/proposals" class="link link-accent text-sm">Go back to all Proposals</Link>
   </div>
 
   {#if proposal}
