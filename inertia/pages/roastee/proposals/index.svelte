@@ -88,7 +88,7 @@
   <div class="w-4/5 mx-auto mt-10 md:w-1/2">
     {#if proposals.data?.length}
       {#each proposals.data as proposal}
-        <Link href={`/roastee/proposals/${proposal.id}`} class="link">
+        <Link href={`/roastee/proposals/${proposal.id}`} class="link no-underline">
           <ProposalCard title={proposal.title} createdAt={proposal.createdAt} />
         </Link>
       {/each}

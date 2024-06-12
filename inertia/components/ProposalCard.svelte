@@ -9,7 +9,7 @@
   <div class="space-y-4">
     <div class="p-5 bg-white rounded-lg flex items-center justify-between space-x-8">
       <div class="flex justify-between items-center w-full">
-        <span class="">{title}</span>
+        <span class="no-underline">{title}</span>
         <div class="badge badge-primary text-white">{new Date(createdAt).toLocaleDateString()}</div>
       </div>
     </div>
