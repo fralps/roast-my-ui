@@ -17,7 +17,7 @@
   export let user
 
   const meta = reviews?.meta
-  const title = 'Reviews'
+  const title = 'My reviews'
 
   let form = useForm({
     page: 1,

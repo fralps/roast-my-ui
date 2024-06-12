@@ -74,7 +74,7 @@
       </div>
     {/if}
 
-    <hr class="my-10" />
+    <hr class="my-10 w-1/2 mx-auto" />
 
     <h1 class="text-2xl text-center nabla mb-6 reviews-title">
       {#each 'Reviews' as letter, index}
