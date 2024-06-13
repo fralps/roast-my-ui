@@ -38,3 +38,12 @@ export const createRoasteeValidator = vine.compile(
     username: vine.string().trim(),
   })
 )
+
+export const avatarValidator = vine.compile(
+  vine.object({
+    avatar: vine.file({
+      size: '2mb',
+      extnames: ['jpg', 'png', 'jpeg'],
+    }),
+  })
+)

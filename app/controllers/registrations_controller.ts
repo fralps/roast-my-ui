@@ -1,5 +1,11 @@
+import app from '@adonisjs/core/services/app'
 import { type HttpContext } from '@adonisjs/core/http'
-import { createRoasterValidator, createRoasteeValidator } from '#validators/user_validator'
+import { cuid } from '@adonisjs/core/helpers'
+import {
+  createRoasterValidator,
+  createRoasteeValidator,
+  avatarValidator,
+} from '#validators/user_validator'
 import Roaster from '#models/roaster'
 import Roastee from '#models/roastee'
 
@@ -16,11 +22,22 @@ export default class SessionsController {
 
     if (type === 'roaster') {
       const payload = await createRoasterValidator.validate(data)
-      await Roaster.create(payload)
+      const { avatar } = await request.validateUsing(avatarValidator)
+
+      await avatar.move(app.makePath('uploads'), {
+        name: `${cuid()}.${avatar.extname}`,
+      })
+
+      await Roaster.create({ ...payload, avatar: avatar.fileName })
       response.redirect().toRoute('sessions.create')
     } else {
       const payload = await createRoasteeValidator.validate(data)
-      await Roastee.create(payload)
+      const { avatar } = await request.validateUsing(avatarValidator)
+
+      await avatar.move(app.makePath('uploads'), {
+        name: `${cuid()}.${avatar.extname}`,
+      })
+      await Roastee.create({ ...payload, avatar: avatar.fileName })
       response.redirect().toRoute('sessions.create')
     }
   }

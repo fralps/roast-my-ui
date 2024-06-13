@@ -57,7 +57,7 @@
     <div class="navbar-end">
       <div class="avatar">
         <div class="w-8 rounded-full">
-          <img src={user.avatar} alt="User avatar" />
+          <img src={`/uploads/${user.avatar}`} alt="User avatar" />
         </div>
       </div>
       <button
