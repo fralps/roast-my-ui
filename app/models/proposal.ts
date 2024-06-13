@@ -27,9 +27,6 @@ export default class Proposal extends BaseModel {
   declare websiteUrl: string
 
   @column()
-  declare screenshots: string | null
-
-  @column()
   declare roastLimit: number | null
 
   @column.dateTime({ autoCreate: true })

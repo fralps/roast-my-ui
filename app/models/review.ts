@@ -26,9 +26,6 @@ export default class Review extends BaseModel {
   @column()
   declare description: string
 
-  @column()
-  declare screenshots: string | null
-
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

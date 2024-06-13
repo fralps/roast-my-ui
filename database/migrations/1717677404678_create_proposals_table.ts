@@ -16,7 +16,6 @@ export default class extends BaseSchema {
       table.string('title').notNullable()
       table.text('description').notNullable()
       table.string('website_url').notNullable()
-      table.string('screenshots').nullable()
       table.integer('roast_limit').nullable().defaultTo(5)
 
       table.timestamp('created_at')

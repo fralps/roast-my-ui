@@ -21,7 +21,6 @@ export default class extends BaseSchema {
 
       table.string('title').notNullable()
       table.text('description').notNullable()
-      table.string('screenshots').nullable()
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

@@ -7,7 +7,6 @@ export const ReviewFactory = factory
     return {
       title: faker.lorem.sentence(),
       description: faker.lorem.paragraph(),
-      screenshots: faker.image.url(),
     }
   })
   .relation('roaster', () => RoasterFactory)

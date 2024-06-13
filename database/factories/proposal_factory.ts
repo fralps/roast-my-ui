@@ -8,7 +8,6 @@ export const ProposalFactory = factory
       title: faker.lorem.sentence(),
       description: faker.lorem.paragraph(),
       websiteUrl: faker.internet.url(),
-      screenshots: faker.image.url(),
       roastLimit: faker.number.int({ max: 20 }),
     }
   })
