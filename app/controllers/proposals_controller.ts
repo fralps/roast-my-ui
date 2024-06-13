@@ -11,6 +11,7 @@ export default class ProposalsController {
   async show({ inertia, params }: HttpContext) {
     const proposal: Proposal = await Proposal.findOrFail(params.id)
     await proposal.load('reviews')
+    await proposal.load('proposalScreenshots')
 
     return inertia.render('proposals/show', { proposal })
   }

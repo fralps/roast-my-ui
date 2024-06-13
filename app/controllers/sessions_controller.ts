@@ -34,6 +34,6 @@ export default class SessionsController {
     const userType = request.input('type', 'roastee')
     await auth.use(userType).logout()
 
-    return response.redirect().toRoute('sessions.create')
+    return response.redirect().toRoute('/')
   }
 }

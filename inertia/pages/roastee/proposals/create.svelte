@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Link, useForm } from '@inertiajs/svelte'
-  import { Navbar, Input, Textarea, Range, Button } from '@components'
+  import { Navbar, Input, Textarea, Range, Button, File } from '@components'
 
   const title = 'New proposal'
 
@@ -9,6 +9,7 @@
     description: null,
     websiteUrl: null,
     roastLimit: 2,
+    screenshots: null,
   })
 
   const create = (): void => {
@@ -22,6 +23,10 @@
       },
     })
   }
+
+  const handleScreenshots = (event: CustomEvent<{ detail: File[] }>): void => {
+    $form.screenshots = event.detail
+  }
 </script>
 
 <svelte:head>
@@ -29,7 +34,7 @@
 </svelte:head>
 
 <Navbar />
-<section class="pb-10 mt-10">
+<section class="pb-10 mt-10 mx-4">
   <h1 class="text-3xl text-center nabla mb-6">
     {#each title as letter, index}
       <span style="animation-delay: {0.0 + index * 0.1}s">{letter}</span>
@@ -68,6 +73,17 @@
     />
 
     <Range min="1" max="5" classes="mb-6" label="Roast limit" bind:value={$form.roastLimit} />
+
+    <File
+      label="Upload screenshots"
+      classes="mb-6"
+      required={true}
+      forId="screenshots"
+      acceptFormats="image/png, image/jpeg, image/jpg"
+      multiple={true}
+      type="file"
+      on:files={handleScreenshots}
+    />
 
     <div class="flex flex-col justify-end w-full">
       <Button label="Create" type="submit" theme="primary" />

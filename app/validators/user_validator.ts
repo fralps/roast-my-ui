@@ -1,7 +1,7 @@
 import vine from '@vinejs/vine'
 
 /**
- * Validates the user's creation action
+ * Validates the roaster's creation action
  */
 export const createRoasterValidator = vine.compile(
   vine.object({
@@ -21,6 +21,9 @@ export const createRoasterValidator = vine.compile(
   })
 )
 
+/**
+ * Validates the roastee's creation action
+ */
 export const createRoasteeValidator = vine.compile(
   vine.object({
     email: vine.string().email().trim(),
@@ -39,6 +42,9 @@ export const createRoasteeValidator = vine.compile(
   })
 )
 
+/**
+ * Validates the roaster's and roastee's avatar creation
+ */
 export const avatarValidator = vine.compile(
   vine.object({
     avatar: vine.file({

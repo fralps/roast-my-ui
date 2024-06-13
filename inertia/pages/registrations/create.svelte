@@ -1,6 +1,6 @@
 <script lang="ts">
   import { useForm, Link } from '@inertiajs/svelte'
-  import { Input, Textarea, Button } from '@components'
+  import { Input, Textarea, Button, File } from '@components'
 
   export let type: { type: string }
 
@@ -27,8 +27,8 @@
     })
   }
 
-  const handleAvatar = (e: Event): void => {
-    $form.avatar = (e.target as HTMLInputElement)?.files?.[0]
+  const handleAvatar = (event: CustomEvent<{ detail: File[] }>): void => {
+    $form.avatar = event.detail
   }
 </script>
 
@@ -109,11 +109,15 @@
       bind:value={$form.passwordConfirmation}
     />
 
-    <input
+    <File
+      label="Upload avatar"
+      classes="mb-6"
+      required={true}
+      forId="avatar"
+      acceptFormats="image/png, image/jpeg, image/jpg"
+      multiple={false}
       type="file"
-      required
-      class="file-input file-input-bordered file-input-primary w-full max-w-xs mb-6"
-      on:input={handleAvatar}
+      on:files={handleAvatar}
     />
 
     {#if Object.keys($form.errors).length}

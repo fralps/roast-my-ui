@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
 import Roastee from '#models/roastee'
 import Review from '#models/review'
+import ProposalScreenshot from '#models/proposal_screenshot'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm'
 
@@ -10,6 +11,9 @@ export default class Proposal extends BaseModel {
 
   @hasMany(() => Review)
   declare reviews: HasMany<typeof Review>
+
+  @hasMany(() => ProposalScreenshot)
+  declare proposalScreenshots: HasMany<typeof ProposalScreenshot>
 
   @column()
   declare roasteeId: number
