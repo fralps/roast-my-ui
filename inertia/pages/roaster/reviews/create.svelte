@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Link, useForm } from '@inertiajs/svelte'
-  import { Navbar, Input, Textarea, Button } from '@components'
+  import { Navbar, Input, Textarea, Button, File } from '@components'
 
   export let proposalId: number
 
@@ -9,6 +9,7 @@
   let form = useForm({
     title: null,
     description: null,
+    screenshots: null,
   })
 
   const create = (): void => {
@@ -19,6 +20,10 @@
         $form.reset('description')
       },
     })
+  }
+
+  const handleScreenshots = (event: CustomEvent<{ detail: File[] }>): void => {
+    $form.screenshots = event.detail
   }
 </script>
 
@@ -51,6 +56,17 @@
         placeholder="First, you buttons are a little too small. Second, the color scheme is a bit off..."
         classes="mb-6"
         bind:value={$form.description}
+      />
+
+      <File
+        label="Upload screenshots"
+        classes="mb-6"
+        required={true}
+        forId="screenshots"
+        acceptFormats="image/png, image/jpeg, image/jpg"
+        multiple={true}
+        type="file"
+        on:files={handleScreenshots}
       />
 
       <div class="flex flex-col justify-end w-full">

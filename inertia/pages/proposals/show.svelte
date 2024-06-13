@@ -18,7 +18,7 @@
       roaster: { username: string }
       roasterId: number
     }[]
-    proposalScreenshots: {
+    screenshots: {
       filePath: string
       fileName: string
     }[]
@@ -60,7 +60,7 @@
       </p>
     </div>
 
-    <Carousel images={proposal?.proposalScreenshots} classes="h-64 mt-10 mx-0 sm:mx-16 md:mx-44" />
+    <Carousel images={proposal?.screenshots} classes="h-64 mt-10 mx-0 sm:mx-16 md:mx-44" />
 
     {#if user.id === proposal.roasteeId && user.type === 'roastee'}
       <div class="w-full text-center mt-10">

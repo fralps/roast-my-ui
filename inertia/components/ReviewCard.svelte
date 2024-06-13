@@ -26,5 +26,13 @@
         }}>Delete</button
       >
     {/if}
+
+    <button
+      class="btn btn-xs btn-primary mt-6"
+      use:inertia={{
+        href: `/proposals/${proposalId}/reviews/${reviewId}`,
+        method: 'get',
+      }}>See details</button
+    >
   </div>
 </details>

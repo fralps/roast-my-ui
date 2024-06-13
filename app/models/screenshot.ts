@@ -4,7 +4,7 @@ import Proposal from '#models/proposal'
 import Review from '#models/review'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
-export default class ProposalScreenshot extends BaseModel {
+export default class Screenshot extends BaseModel {
   @belongsTo(() => Proposal)
   declare Proposal: BelongsTo<typeof Proposal>
 
