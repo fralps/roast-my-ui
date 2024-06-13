@@ -11,13 +11,13 @@ export default class ProposalScreenshot extends BaseModel {
   @belongsTo(() => Review)
   declare Review: BelongsTo<typeof Review>
 
-  @column()
+  @column({ serializeAs: null })
   declare proposalId: number | null
 
-  @column()
+  @column({ serializeAs: null })
   declare reviewId: number | null
 
-  @column({ isPrimary: true })
+  @column({ isPrimary: true, serializeAs: null })
   declare id: number
 
   @column()
@@ -26,18 +26,18 @@ export default class ProposalScreenshot extends BaseModel {
   @column()
   declare fileName: string
 
-  @column()
+  @column({ serializeAs: null })
   declare extname: string
 
-  @column()
+  @column({ serializeAs: null })
   declare type: string
 
-  @column()
+  @column({ serializeAs: null })
   declare size: string
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true, serializeAs: null })
   declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: null })
   declare updatedAt: DateTime
 }

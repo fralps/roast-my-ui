@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Link, inertia } from '@inertiajs/svelte'
-  import { Navbar, ReviewCard } from '@components'
+  import { Navbar, ReviewCard, Carousel } from '@components'
 
   export let proposal: {
     id: number
@@ -17,6 +17,10 @@
       createdAt: string
       roaster: { username: string }
       roasterId: number
+    }[]
+    proposalScreenshots: {
+      filePath: string
+      fileName: string
     }[]
   }
   export let user: { id: number; type: string }
@@ -55,6 +59,8 @@
         ).toLocaleDateString()}
       </p>
     </div>
+
+    <Carousel images={proposal?.proposalScreenshots} classes="h-64 mt-10 mx-0 sm:mx-16 md:mx-44" />
 
     {#if user.id === proposal.roasteeId && user.type === 'roastee'}
       <div class="w-full text-center mt-10">

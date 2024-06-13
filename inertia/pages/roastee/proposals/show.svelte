@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Link, inertia, page } from '@inertiajs/svelte'
-  import { Navbar } from '@components'
+  import { Navbar, Carousel } from '@components'
 
   export let proposal: {
     id: number
@@ -10,6 +10,10 @@
     websiteUrl: string
     roastLimit: number
     createdAt: string
+    proposalScreenshots: {
+      filePath: string
+      fileName: string
+    }[]
   }
 
   const title = proposal.title
@@ -47,6 +51,8 @@
         ).toLocaleDateString()}
       </p>
     </div>
+
+    <Carousel images={proposal?.proposalScreenshots} classes="h-64 mt-10 mx-0 sm:mx-16 md:mx-44" />
 
     {#if $page.props.user.id === proposal.roasteeId}
       <div class="w-full text-center mt-10">
