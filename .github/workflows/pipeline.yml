@@ -2,10 +2,10 @@ name: CI
 on:
   push:
     branches:
-      - "**" # matches every branch
+      - '**' # matches every branch
   pull_request:
     branches:
-      - "staging"
+      - 'staging'
 
 jobs:
   build:
@@ -41,9 +41,9 @@ jobs:
 
       - uses: harmon758/postgresql-action@v1
         with:
-          postgresql db: "roast_my_ui_test"
-          postgresql user: "developer"
-          postgresql password: "password"
+          postgresql db: 'roast_my_ui_test'
+          postgresql user: 'developer'
+          postgresql password: 'password'
 
       - name: 🧪 Run tests
         shell: bash
