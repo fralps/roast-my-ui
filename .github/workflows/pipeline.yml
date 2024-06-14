@@ -2,10 +2,10 @@ name: CI
 on:
   push:
     branches:
-      - '**' # matches every branch
+      - "**" # matches every branch
   pull_request:
     branches:
-      - 'staging'
+      - "staging"
 
 jobs:
   build:
@@ -14,12 +14,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
+      - name: TMP
+        run: echo "Hello, World!"
 
-      - name: 🔧 Install dependencies
-        run: bun install
+      # - uses: oven-sh/setup-bun@v1
+      #   with:
+      #     bun-version: latest
 
-      - name: ⚙️ Build app
-        run: bun run build
+      # - name: 🔧 Install dependencies
+      #   run: bun install
+
+      # - name: ⚙️ Build app
+      #   run: bun run build

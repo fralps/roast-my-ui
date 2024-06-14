@@ -8,8 +8,8 @@ if [[ "${TRACE-0}" == "1" ]]; then
 fi
 
 (cd "$(pwd)/../roast-my-ui" \
-  NODE_ENV=development bun install \
+  NODE_ENV=development pnpm install \
   node ace migration:run
 )
 
-bun run dev
+pnpm run dev
