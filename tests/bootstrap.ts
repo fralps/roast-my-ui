@@ -5,6 +5,7 @@ import { pluginAdonisJS } from '@japa/plugin-adonisjs'
 import testUtils from '@adonisjs/core/services/test_utils'
 import { expect } from '@japa/expect'
 import { apiClient } from '@japa/api-client'
+import { authApiClient } from '@adonisjs/auth/plugins/api_client'
 import { inertiaApiClient } from '@adonisjs/inertia/plugins/api_client'
 import { sessionApiClient } from '@adonisjs/session/plugins/api_client'
 import { shieldApiClient } from '@adonisjs/shield/plugins/api_client'
@@ -22,6 +23,7 @@ export const plugins: Config['plugins'] = [
   expect(),
   pluginAdonisJS(app),
   apiClient(),
+  authApiClient(app),
   inertiaApiClient(app),
   sessionApiClient(app),
   shieldApiClient(),

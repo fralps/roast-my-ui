@@ -78,3 +78,15 @@ test.group('#POST /auth/sessions for roaster user', (group): void => {
     response.assertRedirectsTo('/proposals')
   })
 })
+
+test.group('#DELETE /auth/sessions?type=', (): void => {
+  test('returns 200 status when roaster is logged in', async ({ client }): Promise<void> => {
+    const roaster: Roaster = await RoasterFactory.create()
+    const response = await client
+      .delete('/auth/sessions?type=roaster')
+      .withCsrfToken()
+      .loginAs(roaster)
+
+    response.assertStatus(200)
+  })
+})
