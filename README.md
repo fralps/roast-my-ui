@@ -2,6 +2,8 @@
 
 _Developed in 1 week during the Svelte x AdonisJS Kinoba hackathon I organized from June 10th to June 14th 2024_
 
+_The purpose here was to discover and learn InertiaJS plugged with Svelte components_
+
 ![Hackathon Logo](hackathon-logo.png)
 
 ## Tech stack
@@ -27,12 +29,6 @@ _Developed in 1 week during the Svelte x AdonisJS Kinoba hackathon I organized f
 ```bash
 brew tap oven-sh/bun
 brew install bun
-```
-
-- Foreman: https://github.com/ddollar/foreman
-
-```bash
-gem install foreman
 ```
 
 ## Development
