@@ -25,7 +25,11 @@
 <Navbar />
 <section class="pb-10 mt-10 mx-4">
   <div class="text-center mb-10">
-    <Link href="/reviews" class="link link-accent text-sm">Go back to my reviews</Link>
+    <Link
+      href={user?.type === 'roastee' ? '/roastee/proposals' : '/reviews'}
+      class="link link-accent text-sm"
+      >Go back to my {user?.type === 'roastee' ? 'proposals' : 'reviews'}</Link
+    >
   </div>
 
   {#if review}

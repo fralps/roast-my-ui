@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Link, inertia, page } from '@inertiajs/svelte'
-  import { Navbar, Carousel } from '@components'
+  import { Navbar, Carousel, ReviewCard } from '@components'
 
   export let proposal: {
     id: number
@@ -14,11 +14,22 @@
       filePath: string
       fileName: string
     }[]
+    reviews: {
+      id: number
+      title: string
+      description: string
+      createdAt: string
+      roaster: { username: string }
+      roasterId: number
+      screenshots: {
+        filePath: string
+        fileName: string
+      }[]
+    }[]
   }
+  export let user: { id: number; type: string }
 
   const title = proposal.title
-
-  console.log(proposal)
 </script>
 
 <svelte:head>
@@ -64,6 +75,30 @@
           >Delete proposal</button
         >
       </div>
+    {/if}
+
+    <hr class="my-10 w-1/2 mx-auto" />
+
+    <h1 class="text-2xl text-center nabla mb-6 reviews-title">
+      {#each 'Reviews' as letter, index}
+        <span style="animation-delay: {0.0 + index * 0.1}s">{letter}</span>
+      {/each}
+    </h1>
+
+    {#if proposal.reviews.length}
+      {#each proposal.reviews as review}
+        <ReviewCard
+          title={review.title}
+          description={review.description}
+          createdAt={review.createdAt}
+          roasterId={review.roasterId}
+          proposalId={proposal.id}
+          reviewId={review.id}
+          {user}
+        />
+      {/each}
+    {:else}
+      <p class="text-center">No reviews found</p>
     {/if}
   {:else}
     <p>No proposal found</p>
