@@ -17,6 +17,8 @@
   }
 
   const title = proposal.title
+
+  console.log(proposal)
 </script>
 
 <svelte:head>
