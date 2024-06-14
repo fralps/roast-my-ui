@@ -36,10 +36,14 @@ test.group('#POST /auth/sessions for roastee user', (group): void => {
   })
 
   test('redirects to roastee proposals index', async ({ client }) => {
-    const response = await client.post('/auth/sessions').withInertia().json({
-      email: roastee.email,
-      password: 'password',
-    }).withCsrfToken()
+    const response = await client
+      .post('/auth/sessions')
+      .withInertia()
+      .json({
+        email: roastee.email,
+        password: 'password',
+      })
+      .withCsrfToken()
 
     response.assertRedirectsTo('/roastee/proposals')
   })
@@ -62,10 +66,14 @@ test.group('#POST /auth/sessions for roaster user', (group): void => {
   })
 
   test('redirects to roastee proposals index', async ({ client }) => {
-    const response = await client.post('/auth/sessions').withInertia().json({
-      email: roaster.email,
-      password: 'password',
-    }).withCsrfToken()
+    const response = await client
+      .post('/auth/sessions')
+      .withInertia()
+      .json({
+        email: roaster.email,
+        password: 'password',
+      })
+      .withCsrfToken()
 
     response.assertRedirectsTo('/proposals')
   })
